@@ -1,0 +1,4 @@
+PyInstaller==2.1
+keyring==3.3
+pyral==0.9.4
+requests==2.1.0
