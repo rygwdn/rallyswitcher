@@ -133,10 +133,15 @@ class RallySwitcher:
         return self._rally
 
     def getItem(self, id):
-        artifacts = self.rally.get("Artifact", query='(FormattedId = "%s")' % id, fetch="FormattedID,Parent,WorkProduct")
+        if self.server in id:
+            id = id.split("/")[-1]
+            query = '(ObjectID = "%s")' % id
+        else:
+            query = '(FormattedId = "%s")' % id
+        artifacts = self.rally.get("Artifact", query=query, fetch="FormattedID,Parent,WorkProduct")
         artifact = None
         for a in artifacts:
-            if a.FormattedID == id:
+            if a.FormattedID == id or a.oid == id:
                 artifact = a
                 break
         return artifact
