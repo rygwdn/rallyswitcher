@@ -162,8 +162,11 @@ def main(args):
         os.chdir(os.path.expanduser("~"))
     switcher = RallySwitcher()
     for id in args:
-        for issue in switcher.getItemAndParents(id):
-            print "%s: %s\n%s" % (issue.FormattedID, issue.Name, issue.FormattedID)
+        for i, issue in enumerate(switcher.getItemAndParents(id)):
+            if i > 0:
+                print
+            # Write without trailing newline (CopyQ is weird..)
+            sys.stdout.write("%s: %s\n%s" % (issue.FormattedID, issue.Name, issue.FormattedID))
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
