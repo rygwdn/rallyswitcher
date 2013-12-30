@@ -158,6 +158,8 @@ class RallySwitcher:
                 issue = None
 
 def main(args):
+    if not os.access(os.curdir, os.W_OK):
+        os.chdir(os.path.expanduser("~"))
     switcher = RallySwitcher()
     for id in args:
         for issue in switcher.getItemAndParents(id):
