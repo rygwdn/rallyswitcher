@@ -7,6 +7,7 @@ import sys
 import getpass
 import ConfigParser
 import itertools
+import urlparse
 
 import keyring
 import pyral
@@ -153,7 +154,8 @@ class JiraSwitcher:
         return self._jira
 
     def getItem(self, id):
-        # TODO: handle URL as well as ID
+        if self.server in id:
+            id = urlparse.urlparse(id).path.split("/")[-1]
         try:
             return self.jira.issue(id)
         except jira.exceptions.JIRAError, e:
