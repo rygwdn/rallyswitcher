@@ -9,7 +9,7 @@ Currently it provides:
 
 This script is mostly intended for my personal use along with CopyQ by doing the following:
 - Add a command to CopyQ named "Collect Issue data"
-- Set the "Content" to: "`^[ \t\n]*([A-Z]{2,}-?[0-9]{2,9})[ \t\n]*$`"
+- Set the "Content" to: "`^\s*([A-Z]{2,}-?[0-9]{2,9}|https?://rally1.rallydev.com/.+|https?://jira\.[^\s]*)\s*$`"
 - Type of Action "Automatic" and "In Menu"
 - Command: "`/path/to/issueswitch %2`"
 - Output: "`text/plain`"

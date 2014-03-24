@@ -152,8 +152,17 @@ class JiraSwitcher:
 
         return self._jira
 
+    def getItem(self, id):
+        # TODO: handle URL as well as ID
+        try:
+            return self.jira.issue(id)
+        except jira.exceptions.JIRAError, e:
+            if e.status_code == 404:
+                # Issue doesn't exist
+                return None
+
     def getItemAndParents(self, id):
-        issue = self.jira.issue(id)
+        issue = self.getItem(id)
         while issue:
             yield {
                     "id": issue.key,
@@ -161,7 +170,7 @@ class JiraSwitcher:
                     }
 
             if issue.fields.issuetype.subtask and issue.fields.parent:
-                issue = self.jira.issue(issue.fields.parent.key)
+                issue = self.getItem(issue.fields.parent.key)
             else:
                 issue = None
 
