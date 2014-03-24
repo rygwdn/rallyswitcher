@@ -1,6 +1,5 @@
 # -*- mode: python -*-
-a = Analysis(['rallyswitch.py'],
-             #pathex=['/Users/rwooden/Dropbox/projects/jira-thinggy'],
+a = Analysis(['issueswitch.py'],
              hiddenimports=[],
              hookspath=['./hooks/'],
              runtime_hooks=None)
@@ -10,7 +9,7 @@ exe = EXE(pyz,
           a.binaries,
           a.zipfiles,
           a.datas,
-          name='rallyswitch',
+          name='issueswitch',
           debug=False,
           strip=None,
           upx=True,

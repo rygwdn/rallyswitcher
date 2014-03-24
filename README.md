@@ -1,17 +1,17 @@
-Rally Switcher
+Issue Switcher
 ==============
 
-Script which takes a Rally issue ID as an argument, and provides
-various types of output related to the Rally issue on stdout.
+Script which takes a Rally or Jira issue ID as an argument, and provides
+various types of output related to the issue on stdout.
 
 Currently it provides:
 - The issue, and (if it has one) its parent's ID as "`###: <summary>`" and as "`###`"
 
 This script is mostly intended for my personal use along with CopyQ by doing the following:
-- Add a command to CopyQ named "Collect Rally data"
-- Set the "Content" to: "`^[ \t\n]*([A-Z]{2}[0-9]{3,9})[ \t\n]*$`"
+- Add a command to CopyQ named "Collect Issue data"
+- Set the "Content" to: "`^[ \t\n]*([A-Z]{2,}-?[0-9]{2,9})[ \t\n]*$`"
 - Type of Action "Automatic" and "In Menu"
-- Command: "`/path/to/rallyswitch %2`"
+- Command: "`/path/to/issueswitch %2`"
 - Output: "`text/plain`"
 - Separator: "`\n`"
 - Output tab: "`&issues`"
@@ -21,4 +21,4 @@ script and put it's output into a separate tab.
 
 I recommend creating a single-file binary using pyinstaller by running:
 
-    pyinstaller rallyswitch.spec
+    pyinstaller issueswitch.spec
